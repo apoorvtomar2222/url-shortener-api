@@ -33,6 +33,6 @@ router.use('/shortner', shortnerrouter)
 app.use(router);
 
 let server = http.createServer(app);
-server.listen(port, () => {
-    console.log('API Server is listening on port:', port);
+server.listen(process.env.PORT || 4000, () => {
+    console.log('API Server is listening on port: 4000');
 });
