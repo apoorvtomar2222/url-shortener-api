@@ -1,0 +1,41 @@
+{
+  "name": "nodejs-es6-boilerplate",
+  "version": "1.0.0",
+  "description": "NodeJS ES6 boilterplate project",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel app -d build && cp -rf ./config ./build/config",
+    "start": "node scripts/nodemon.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chungheepark/nodejs-es6-boilerplate.git"
+  },
+  "keywords": [
+    "nodejs",
+    "es6",
+    "boilterplate"
+  ],
+  "author": "choong@itmoss.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chungheepark/nodejs-es6-boilerplate/issues"
+  },
+  "homepage": "https://github.com/chungheepark/nodejs-es6-boilerplate#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "config": "^1.26.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "mongoose": "^5.0.12",
+    "node-url-shortener": "^1.0.1"
+  }
+}
