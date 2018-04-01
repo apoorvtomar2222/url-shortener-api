@@ -1,8 +1,10 @@
 import express from 'express';
 import request from 'request';
 import UrlModel from '../models/url'
-import urlModel from '../models/url';
-const load = (url) => {
+
+let shortnercontroller = express.Router()
+
+const trimUrl = (url) => {
     return new Promise((resolve, reject) => {
         request({
             url: "https://is.gd/create.php?format=simple&url=" + url,
@@ -48,7 +50,7 @@ async function urlshortnerFunction(urllist, callback) {
     console.log(urllist, 'urllist');
 
     for (let item of urllist) {
-        let shortnedurl = await load(item.url);
+        let shortnedurl = await trimUrl(item.url);
         console.log('Item', item);
         item.shorturl = shortnedurl;
         item.time = todaydate
@@ -59,8 +61,9 @@ async function urlshortnerFunction(urllist, callback) {
     callback(null);
 
 }
-
-let shortnercontroller = express.Router()
+/**
+ * @description trim and save route
+ */
 
 shortnercontroller.post('/', (req, res, callback) => {
     console.log('Called', req.body);
@@ -77,7 +80,10 @@ shortnercontroller.post('/', (req, res, callback) => {
     })
 
 });
-
+/**
+ * @description fetch url list
+ * @Author Apoorv Tomar
+ */
 shortnercontroller.get('/geturls', (req, res) => {
     UrlModel.find({}, (error, result) => {
         if (!error) { res.send(result); }

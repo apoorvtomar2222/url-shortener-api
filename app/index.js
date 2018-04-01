@@ -13,7 +13,6 @@ let port = config.port || 8080;
 app.use(bodyParser.urlencoded());    // bodyparser urlencoded
 app.use(bodyParser.json());
 app.use(cors());    // bodyparser json;
-// app.use(morgan('dev'));              // morgan http-request-logger
 
 let router = express.Router();
 
@@ -22,10 +21,6 @@ mongoose.connect('mongodb://user:user@ds125195.mlab.com:25195/tripoto', (err, db
         console.log('err', err);
     }
     else { console.log('Connected to Db') }
-});
-
-router.get('/hello', (req, res) => {
-    res.send('Hello World!')
 });
 
 router.use('/shortner', shortnerrouter)
